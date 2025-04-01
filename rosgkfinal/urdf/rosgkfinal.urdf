@@ -1,0 +1,663 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="rosgkfinal" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <xacro:property name="camera_link" value="0.05" />
+  <xacro:property name="height3" value="0.2" />
+  <xacro:property name="axel_offset" value="0.1" />
+  
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.00239506949251722 -1.11022302462516E-16 -0.0337760800101865"
+        rpy="0 0 0" />
+      <mass
+        value="0.34555530282193" />
+      <inertia
+        ixx="0.00235597995164024"
+        ixy="2.34668227270661E-18"
+        ixz="-6.35299748605835E-05"
+        iyy="0.00185302876841725"
+        iyz="1.65981291586631E-18"
+        izz="0.00337461610296602" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>  
+  <link name="odom">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" /> <!-- Simple box to represent the link -->
+      </geometry>
+      <material name="default">
+        <color rgba="0.5 0.5 0.5 1" /> <!-- Neutral gray color -->
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <box size="0.01 0.01 0.01" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint name="odom_to_base" type="fixed">
+      <parent link="odom" />
+      <child link="base_link" />
+      <origin xyz="0 0 0" rpy="0 0 0" />
+  </joint>
+
+  <link
+    name="rf_link">
+    <inertial>
+      <origin
+        xyz="-2.47314724155512E-06 -0.0152646743939506 -4.79789063756453E-08"
+        rpy="0 0 0" />
+      <mass
+        value="0.200301461531556" />
+      <inertia
+        ixx="4.50189401842943E-05"
+        ixy="-5.52994210817075E-09"
+        ixz="6.57765846699862E-11"
+        iyy="8.11567559882049E-05"
+        iyz="-1.00909052722847E-10"
+        izz="4.50153976261998E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/rf_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/rf_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_front_omni"
+    type="continuous">
+    <origin
+      xyz="0.0775341960918754 -0.136 -0.0574999999999999"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rf_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="rb_link">
+    <inertial>
+      <origin
+        xyz="2.4428624358086E-06 -0.0152646743898266 -3.88823386821002E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.200301461414808" />
+      <inertia
+        ixx="4.5018852743221E-05"
+        ixy="5.46080843046009E-09"
+        ixz="-5.53076766960324E-10"
+        iyy="8.11567557526164E-05"
+        iyz="-8.7601277547635E-10"
+        izz="4.50154848243068E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/rb_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/rb_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="right_back_omni"
+    type="continuous">
+    <origin
+      xyz="-0.0774658039081244 -0.136 -0.0575"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="rb_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="lb_link">
+    <inertial>
+      <origin
+        xyz="2.47174496444125E-06 0.0152646742726521 -1.02725223591338E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.200301457858002" />
+      <inertia
+        ixx="4.50189342922142E-05"
+        ixy="-5.5259522263562E-09"
+        ixz="-1.43575832851724E-10"
+        iyy="8.11567539748828E-05"
+        iyz="2.24413539042717E-10"
+        izz="4.50154012736852E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/lb_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/lb_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_back_omni"
+    type="continuous">
+    <origin
+      xyz="-0.077466 0.136 -0.0575"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lb_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="lf_link">
+    <inertial>
+      <origin
+        xyz="2.43304476615913E-06 0.0152646743918446 4.46174020604651E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.200301461649765" />
+      <inertia
+        ixx="4.50188249436321E-05"
+        ixy="-5.43863070967286E-09"
+        ixz="6.315921491573E-10"
+        iyy="8.11567558640403E-05"
+        iyz="-1.00421200063745E-09"
+        izz="4.50155127501733E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/lf_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/lf_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="left_front_omni"
+    type="continuous">
+    <origin
+      xyz="0.077534 0.136 -0.0575"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="lf_link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="prismatic_link">
+    <inertial>
+      <origin
+        xyz="0.000242286346931492 -0.00453799944643757 0.0851163921572771"
+        rpy="0 0 0" />
+      <mass
+        value="0.00995822995618054" />
+      <inertia
+        ixx="2.66438625226041E-05"
+        ixy="5.11502885097009E-10"
+        ixz="-1.44483765097241E-07"
+        iyy="2.66508258809082E-05"
+        iyz="1.79693493706529E-07"
+        izz="2.31635629526228E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/prismatic_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/prismatic_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint1"
+    type="prismatic">
+    <origin
+      xyz="0.095 0 0.1"
+      rpy="0.34907 0 1.5708" />
+    <parent
+      link="base_link" />
+    <child
+      link="prismatic_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-0.7"
+      upper="0.7"
+      effort="100"
+      velocity="10" />
+    <initial_position>0.0</initial_position>
+    <dynamics damping="0.1" friction="0.5"/>
+  </joint>
+  <link
+    name="revolute_link">
+    <inertial>
+      <origin
+        xyz="0.042129823188898 -5.55111512312578E-17 0.000249999999999459"
+        rpy="0 0 0" />
+      <mass
+        value="0.0106233474561067" />
+      <inertia
+        ixx="7.74852548257751E-07"
+        ixy="1.32348898008484E-21"
+        ixz="3.25708364680257E-23"
+        iyy="7.00655417732227E-06"
+        iyz="-7.68479856829853E-22"
+        izz="6.87406815390993E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/revolute_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/revolute_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint2"
+    type="revolute">
+    <origin
+      xyz="0.0055 -0.00475 0.145"
+      rpy="-1.5708 0 -1.5708" />
+    <parent
+      link="prismatic_link" />
+    <child
+      link="revolute_link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-3.14159"
+      upper="3.14159"
+      effort="100"
+      velocity="10" />
+  </joint>
+  <link
+    name="camera_link">
+    <inertial>
+      <origin
+        xyz="-0.000189586100247316 -6.93889390390723E-18 0.00859012007642213"
+        rpy="0 0 0" />
+      <mass
+        value="0.00662831853071797" />
+      <inertia
+        ixx="3.94996308253945E-07"
+        ixy="-3.72877435303435E-25"
+        ixz="1.30814409170656E-08"
+        iyy="3.97271341456913E-07"
+        iyz="-9.33869379464114E-24"
+        izz="4.10129014836943E-07" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/camera_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/camera_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera"
+    type="fixed">
+    <origin
+      xyz="0.088034 0 -0.06"
+      rpy="0 1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="camera_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="imu_link">
+    <inertial>
+      <origin
+        xyz="0 0 -0.000571499999999989"
+        rpy="0 0 0" />
+      <mass
+        value="0.000827468902416822" />
+      <inertia
+        ixx="2.98948103591104E-08"
+        ixy="1.30602582964655E-11"
+        ixz="4.05994047282453E-27"
+        iyy="1.6454227951926E-08"
+        iyz="-8.90674301130805E-27"
+        izz="4.61688639910207E-08" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/imu_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.529411764705882 0.549019607843137 0.549019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://rosgkfinal/meshes/imu_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="imu"
+    type="fixed">
+    <origin
+      xyz="0.0032786 0.0017454 -0.068857"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="imu_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+  <gazebo reference="camera_link">
+    <sensor type="camera" name="camera1">
+      <update_rate>30.0</update_rate>
+      <camera name="head">
+        <horizontal_fov>1.3962634</horizontal_fov>
+        <image>
+          <width>800</width>
+          <height>800</height>
+          <format>R8G8B8</format>
+        </image>
+        <clip>
+          <near>0.02</near>
+          <far>300</far>
+        </clip>
+        <noise>
+          <type>gaussian</type>
+          <!-- Noise is sampled independently per pixel on each frame.
+               That pixel's noise value is added to each of its color
+               channels, which at that point lie in the range [0,1]. -->
+          <mean>0.0</mean>
+          <stddev>0.007</stddev>
+        </noise>
+      </camera>
+      
+      <plugin name="camera_controller" filename="libgazebo_ros_camera.so">
+        <alwaysOn>true</alwaysOn>
+        <updateRate>0.0</updateRate>
+        <cameraName>rrbot/camera1</cameraName>
+        <imageTopicName>image_raw</imageTopicName>
+        <cameraInfoTopicName>camera_info</cameraInfoTopicName>
+        <frameName>camera_link</frameName>
+        <hackBaseline>0.07</hackBaseline>
+        <distortionK1>0.0</distortionK1>
+        <distortionK2>0.0</distortionK2>
+        <distortionK3>0.0</distortionK3>
+        <distortionT1>0.0</distortionT1>
+        <distortionT2>0.0</distortionT2>
+      </plugin>
+    </sensor>
+
+    <gravity>true</gravity>
+    <sensor name="imu_sensor" type="imu">
+      <always_on>true</always_on>
+      <update_rate>100</update_rate>
+      <visualize>true</visualize>
+      <topic>__default_topic__</topic>
+      <plugin filename="libgazebo_ros_imu_sensor.so" name="imu_plugin">
+        <topicName>imu</topicName>
+        <bodyName>imu_link</bodyName>
+        <updateRateHZ>10.0</updateRateHZ>
+        <gaussianNoise>0.0</gaussianNoise>
+        <xyzOffset>0 0 0</xyzOffset>
+        <rpyOffset>0 0 0</rpyOffset>
+        <frameName>imu_link</frameName>
+        <initialOrientationAsReference>false</initialOrientationAsReference>
+      </plugin>
+      <pose>0 0 0 0 0 0</pose>
+    </sensor>
+
+  </gazebo>
+
+  <gazebo>   
+    <plugin name="skid_steer_drive_controller" filename="libgazebo_ros_skid_steer_drive.so">
+      <updateRate>100.0</updateRate>
+      <robotNamespace>/</robotNamespace>
+      <leftFrontJoint>left_front_omni</leftFrontJoint>
+      <rightFrontJoint>right_front_omni</rightFrontJoint>
+      <leftRearJoint>left_back_omni</leftRearJoint>
+      <rightRearJoint>right_back_omni</rightRearJoint>
+      <wheelSeparation>0.4</wheelSeparation>
+      <wheelDiameter>0.215</wheelDiameter>
+      <robotBaseFrame>base_link</robotBaseFrame>
+      <torque>20</torque>
+      <topicName>cmd_vel</topicName>
+      <broadcastTF>false</broadcastTF>
+    </plugin>
+  </gazebo>
+
+  <gazebo>
+  <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    <robotNamespace>/</robotNamespace>
+    <controlPeriod>0.001</controlPeriod>
+    <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+    <legacyModeNS>true</legacyModeNS>
+  </plugin>
+  </gazebo>
+    <!-- Motor 1 -->
+  <transmission name="right_front_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_front_omni">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_right_front">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+  
+  <!-- Motor 2 -->
+  <transmission name="left_front_omni_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="left_front_omni">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_left_front">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+  
+  <!-- Motor 3 -->
+  <transmission name="right_back_omni_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="right_back_omni">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_right_back">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+  
+  <!-- Motor 4 -->
+  <transmission name="left_back_omni_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="left_back_omni">
+    <hardwareInterface>hardware_interface/VelocityJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor_left_back">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+
+    <transmission name="prismatic_link_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint1">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="prismatic_link_motor">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+
+  <transmission name="revolute_link_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint2">
+    <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="revolute_link_motor">
+    <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+</robot>

@@ -1,0 +1,59 @@
+<launch>
+  <!-- Parameters for Gazebo -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+  <arg name="enable_keyboard" default="true"/>
+  
+  <!-- Launch Gazebo -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <arg name="debug" value="$(arg debug)"/>
+  </include>
+
+  <param name="robot_description" textfile="$(find rosgkfinal)/urdf/rosgkfinal.urdf" />
+
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model"
+        args="-file $(find rosgkfinal)/urdf/rosgkfinal.urdf -urdf -model rosgkfinal"
+        output="screen" />
+
+  <include file="$(find rosgkfinal)/launch/display.launch"/>
+
+  <rosparam file="$(find rosgkfinal)/config/joint_names_rosgkfinal.yaml" command="load"/>
+
+  <node name="control" pkg="rosgkfinal" type="controller.py" output="screen">
+    <remap from="cmd_vel" to="/cmd_vel"/> 
+    <param name="speed" value="0.5"/>    
+    <param name="turn" value="1.0"/>     
+  </node>
+
+  <node name="jointcontrol" pkg="rosgkfinal" type="jointcontrol.py" output="screen" if="$(arg enable_keyboard)"/>
+
+  <node name="robot_state_publisher" pkg="robot_state_publisher" 
+    type="robot_state_publisher" respawn="false" output="screen"/>
+
+  <node name="controller_spawner" pkg="controller_manager" type="spawner"
+      args="joint_state_controller arm_1_controller arm_2_controller"
+      output="screen"
+      launch-prefix="bash -c 'sleep 5; $0 $@'" />
+
+  <node name="controller_manager" pkg="controller_manager" type="controller_manager" output="screen" />
+
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher"
+        args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic"
+        args="pub /calibrated std_msgs/Bool true" />
+
+  <node name="camera_view" pkg="rqt_image_view" type="rqt_image_view"
+        args="/rrbot/camera1/image_raw" />
+
+  <!-- <node name="encoder" pkg="rosgkfinal" type="encoder.py" output="screen">
+    <remap from="encoder_1" to="/joint_states"/>  -->
+  <!-- </node> -->
+</launch>
