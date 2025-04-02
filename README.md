@@ -9,14 +9,16 @@ Bài tập mô phỏng về xe omni 4 bánh có 2 khớp tay:
 Bài tập được mô phỏng trên gazebo và vriz 
 
 Các bước để chạy được package: 
-- B1: Đưa package vào catkin_ws/src
-- B2: Quay trở lai về catkin_ws và chạy dòng catkin_make sau khi đã catkin_make thì tạo source bằng lệnh source ~/.bashrc  
-- B3: Tạo quyền truy cập cho các file trong thư mục bằng các dòng lệnh sau:
-'chmod +x controller.py'
+   B1: Đưa package vào catkin_ws/src
+   B2: Quay trở lai về catkin_ws và chạy dòng catkin_make sau khi đã catkin_make thì tạo source bằng lệnh source ~/.bashrc  
+   B3: Tạo quyền truy cập cho các file trong thư mục bằng các dòng lệnh sau:
+```sh
+chmod +x controller.py
 chmod +x encoder.py
 chmod +x jointcontrol.py
-- B4: Khởi chạy đồng thời cả Gazebo và Rviz bằng dòng lệnh: roslaunch rosgkfinal gazebo.launch
-- B5: Điều khiển robot: 
+
+   B4: Khởi chạy đồng thời cả Gazebo và Rviz bằng dòng lệnh: roslaunch rosgkfinal gazebo.launch
+   B5: Điều khiển robot: 
 - w: tiến
 - s: lùi
 - q: rẽ phải
