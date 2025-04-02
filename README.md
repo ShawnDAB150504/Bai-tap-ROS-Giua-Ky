@@ -9,9 +9,9 @@ Bài tập mô phỏng về xe omni 4 bánh có 2 khớp tay:
 Bài tập được mô phỏng trên gazebo và vriz 
 
 Các bước để chạy được package: 
-   B1: Đưa package vào catkin_ws/src
-   B2: Quay trở lai về catkin_ws và chạy dòng `catkin_make` sau khi đã catkin_make thì tạo source bằng lệnh source `~/.bashrc`  
-   B3: Tạo quyền truy cập cho các file trong thư mục bằng các dòng lệnh sau:
+1. : Đưa package vào catkin_ws/src
+2. : Quay trở lai về catkin_ws và chạy dòng `catkin_make` sau khi đã catkin_make thì tạo source bằng lệnh source `~/.bashrc`  
+3. : Tạo quyền truy cập cho các file trong thư mục bằng các dòng lệnh sau:
 `
 chmod +x controller.py
 chmod +x encoder.py
