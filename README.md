@@ -12,13 +12,13 @@ Các bước để chạy được package:
 1. : Đưa package vào catkin_ws/src
 2. : Quay trở lai về catkin_ws và chạy dòng `catkin_make` sau khi đã catkin_make thì tạo source bằng lệnh source `~/.bashrc`  
 3. : Tạo quyền truy cập cho các file trong thư mục bằng các dòng lệnh sau:
-`
+```
 chmod +x controller.py
 chmod +x encoder.py
 chmod +x jointcontrol.py
-`
-   B4: Khởi chạy đồng thời cả Gazebo và Rviz bằng dòng lệnh: `roslaunch rosgkfinal gazebo.launch`
-   B5: Điều khiển robot: 
+```
+4. : Khởi chạy đồng thời cả Gazebo và Rviz bằng dòng lệnh: `roslaunch rosgkfinal gazebo.launch`
+5. : Điều khiển robot: 
 - w: tiến
 - s: lùi
 - q: rẽ phải
@@ -28,6 +28,7 @@ chmod +x jointcontrol.py
 - u: Xoay tay máy ra trước
 - i: Xoay tay máy về hướng ngược lại
 B6: Đọc các giá trị cảm biến bằng các dòng lệnh sau:
-  `rostopic echo /imu (chạy cảm biến imu)
+  ```
+  rostopic echo /imu (chạy cảm biến imu)
   rosrun rosgkfinal encoder.py (chạy encorder)
-  `
+  
